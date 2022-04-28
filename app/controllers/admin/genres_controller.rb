@@ -1,14 +1,22 @@
 class Admin::GenresController < ApplicationController
-  
+
   def create
-    @genre = Genre.new(genr_params)
-    @genre.user_id = current_user.id
+    @genre = Genre.new(genre_params)
     @genre.save
-    redirect_to genr_params
+    redirect_to admin_genres_path
   end
-  
+
+  def index
+    @genre = Genre.new
+    @genres = Genre.all
+  end
+
+  def edit
+    @genre = @genre.find(params[:id])
+  end
+
+
   private
-  
   def genre_params
     params.require(:genre).permit(:name)
   end
