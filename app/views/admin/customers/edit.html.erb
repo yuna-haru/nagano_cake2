@@ -1,0 +1,17 @@
+<div>
+  <div>
+    <div>
+
+      <h5><%= customer.name %>さんの会員詳細</h5>
+      <%= form_with model: @customer, do |f| %>
+      <p>会員ID</p>
+      <p><label>氏名</label><%= f.text_field :first_name %> <%= f.text_field :last_name %></p>
+      <p><label>フリガナ</label><%= f.text_field :first_name_kana %><%= f.text_field :first_name_kana %></p>
+      <p><label>郵便番号</label><%= f.text_field :first_name_kana %></p>
+      <p><label>住所</label><%= f.text_field :address %></p>
+      <p><label>電話番号</label><%= f.text_field :telephone_numbera %></p>
+      <p><label>メールアドレス</label><%= f.text_field :email %></p>
+      <p>会員ステータス</p>
+    </div>
+  </div>
+  </div>
