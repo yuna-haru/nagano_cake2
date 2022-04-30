@@ -2,19 +2,23 @@
   <div>
     <div>
       <h5>商品編集</h5>
-        <%= form_with model: @item, url: new_admin_item_path do |f| %>
+        <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
 
-           <label>商品画像</label><%= f.file_field :image, accept: "image/*" %>
+           <div><label>商品画像</label><%= f.file_field :image, accept: "image/*" %></div>
 
-          <label>商品名</label> <%= f.text_field :name %>
+          <div><label>商品名</label> <%= f.text_field :name %></div>
 
-          <label>商品説明</label> <%= f.text_area :introduction %>
+          <div><label>商品説明</label> <%= f.text_area :introduction %></div>
 
-          <label>ジャンル</label>
+          <div><label>ジャンル</label>　<%= f.collection_select(:genre_id, Genre.all, :id, :name) %></div>
 
-          <label>税抜価格</label> <%= f.text_field :price %>円
+          <div><label>税抜価格</label> <%= f.text_field :price %>円</div>
 
-          <label>販売ステータス</label>
+          <div><label>販売ステータス<% if @item.finished %>
+          <%= link_to '販売中', item_path(@item.id, item: {finished: false}), method: :put %>
+          <% else %>
+          <%= link_to '販売停止中', item_path(@item.id, item: {finished: true}), method: :put %>
+          <% end %></label></div>
 
           <%= f.submit '変更を保存' %>
         <% end %>

@@ -5,8 +5,8 @@
       <div>
         <div>
           <div>
-            <% if list.image.attached? %>
-              <%= image_tag item.image %>
+            <% if @item.image.attached? %>
+              <%= image_tag @item.image %>
             <% else %>
               <%= image_tag 'no_image', size: "200x200" %>
             <% end %>
@@ -17,12 +17,12 @@
       <div>
         <div>
           <div>
-            <p>商品名</p><%= item.name %>
-            <p>商品説明</p><%= item.introduction %>
-            <P>ジャンル</P>
-            <p>税込価格(税抜価格)</p><%= item.price %>
-            <P>販売ステータス</P>
-            <%= link_to "編集する", edit_admin_item_path(item.id) %>
+            <div>商品名<%= @item.name %></div>
+            <div>商品説明<%= @item.introduction %></div>
+            <div>ジャンル<%= @item.genre.name %></div>
+            <div>税込価格(税抜価格)<%= @item.price %></div>
+            <div>販売ステータス</div>
+            <%= link_to "編集する", edit_admin_item_path(@item.id) %>
           </div>
         </div>
       </div>

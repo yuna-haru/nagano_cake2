@@ -15,6 +15,8 @@ class Admin::CustomersController < ApplicationController
     customer = Customer.find(params[:id])
     customer.update(customer_params)
     redirect_to admin_customer
+  end
+
 
   private
   def customer_params
