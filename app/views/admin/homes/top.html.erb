@@ -1,23 +1,23 @@
-<div>
-  <dib>
-    <div>
-      <h5>注文履歴一覧</h5>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-xl-11">
+      <h5 class="my-4 ml-3 px-2 border bg-light d-inline">注文履歴一覧</h5>
       <table>
         <thead>
           <tr>
-            <th><h6>購入日時</h6></th>
-            <th><h6>購入者</h6></th>
-            <th><h6>注文個数</h6></th>
-            <th><h6>注文ステータス</h6></th>
+            <th class="px-3 text-nowrap font-weight-bold" style="width: 30%"><h6>購入日時</h6></th>
+            <th class="px-3 text-nowrap font-weight-bold" style="width: 20%"><h6>購入者</h6></th>
+            <th class="px-3 text-nowrap font-weight-bold" style="width: 10%"><h6>注文個数</h6></th>
+            <th class="px-3 text-nowrap font-weight-bold" style="width: 20%"><h6>注文ステータス</h6></th>
            </tr>
         </thead>
         <tbody>
            <% @order.each do |order|%>
            <tr>
-            <td><p><%= order.created_at %></p></td>
-            <td><p><%= order.customer.first_name %><%= order.customer.last_name %></p></td>
-            <td><p><%= order.customer.amount %></p></td>
-            <td><p><%= order.order_status %></p></td>
+            <td class="px-3"><p><%= order.created_at %></p></td>
+            <td class="px-3"><p><%= order.customer.first_name %><%= order.customer.last_name %></p></td>
+            <td class="px-3"><p><%= order.customer.amount %></p></td>
+            <td class="px-3"><p><%= order.order_status %></p></td>
           </tr>
           <% end %>
          </tbody>

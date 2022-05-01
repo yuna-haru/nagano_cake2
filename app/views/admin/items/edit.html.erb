@@ -1,28 +1,36 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-xl-11">
-      <h5 class="mt-2">商品編集</h5>
-        <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
 
-           <div><label>商品画像</label><%= f.file_field :image, accept: "image/*" %></div>
+      <h5 class="my-4 ml-3 px-2 border bg-light d-inline">商品編集</h5>
 
-          <div><label>商品名</label> <%= f.text_field :name %></div>
+        <div class="row">
+         <div class="ml-6">
 
-          <div><label>商品説明</label> <%= f.text_area :introduction %></div>
+          <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
 
-          <div><label>ジャンル</label>　<%= f.collection_select(:genre_id, Genre.all, :id, :name) %></div>
+            <label for="edit_image">商品画像</label><%= f.file_field :image, accept: "image/*", id:"edit_image" %><br>
 
-          <div><label>税抜価格</label> <%= f.text_field :price %>円</div>
+            <label for="edit_name">商品名</label> <%= f.text_field :name, id:"edit_name" %><br>
 
-          <div>販売ステータス
-          <%= f.label :is_active, '販売中', value: TRUE %>
-          <%= f.radio_button :is_active, '1' %>
-          <%= f.label :is_active, '販売停止', value: FALSE %>
-          <%= f.radio_button :is_active, '0' %>
-          </div>
+            <label for="edit_introduction">商品説明</label> <%= f.text_area :introduction, id:"edit_introduction" %><br>
 
-          <%= f.submit '変更を保存' %>
-        <% end %>
+            <label >ジャンル</label>　<%= f.collection_select(:genre_id, Genre.all, :id, :name) %><br>
+
+            <label for="edit_price">税抜価格</label> <%= f.text_field :price, id:"edit_price" %>円<br>
+
+            販売ステータス
+            <%= f.label :is_active, '販売中', value: TRUE, id:"status" %>
+            <%= f.radio_button :is_active, '1', id:"status" %>
+            <%= f.label :is_active, '販売停止', value: FALSE, id:"status" %>
+            <%= f.radio_button :is_active, '0', id:"status" %><br>
+
+            <%= f.submit '変更を保存', class: 'btn btn-success nx-auto ml-6' %>
+          <% end %>
+
+        </div>
+      </div>
+
     </div>
   </div>
 </div>

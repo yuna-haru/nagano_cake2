@@ -2,33 +2,36 @@
   <div class="row">
     <div class="mx-auto col-xl-11">
 
-      <div>
-        <div>
-          <div>
+      <h5 class="my-4 ml-3 px-2 border bg-light d-inline">商品詳細</h5>
+
+      <div class="flex-row">
+
+          <div class="col-md-4 py-5">
             <% if @item.image.attached? %>
               <%= image_tag @item.image %>
             <% else %>
               <%= image_tag 'no_image', size: "200x200" %>
             <% end %>
           </div>
-        </div>
-      </div>
 
-      <div>
-        <div>
-          <div>
-            <div>商品名<%= @item.name %></div>
+          <div class="col-md-7">
+            <div class="mr-6">商品名 <%= @item.name %></div>
+
             <div>商品説明<%= @item.introduction %></div>
+
             <div>ジャンル<%= @item.genre.name %></div>
-            <div>税込価格(税抜価格)<%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)</div>
-            <div>販売ステータス<% if @item.is_active %>
-                       <p class="text-success">販売中</p>
-                     <% else %>
-                       <p class="text-muted">販売停止中</p>
-                     <%end%></div>
-            <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+
+            <div>税込価格(税抜価格)<%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円</div>
+
+            <div class="text-nowrap">販売ステータス<% if @item.is_active %>
+              <span class="text-success">販売中</span>
+            <% else %>
+              <span class="text-muted">販売停止中</span>
+            <%end%></div>
+
+            <%= link_to "編集する", edit_admin_item_path(@item.id), class: 'btn btn-success nx-auto ml-6' %>
           </div>
-        </div>
+
       </div>
 
     </div>
