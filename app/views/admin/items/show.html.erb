@@ -1,6 +1,6 @@
-<div>
-  <div>
-    <div>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-xl-11">
 
       <div>
         <div>
@@ -20,8 +20,12 @@
             <div>商品名<%= @item.name %></div>
             <div>商品説明<%= @item.introduction %></div>
             <div>ジャンル<%= @item.genre.name %></div>
-            <div>税込価格(税抜価格)<%= @item.price %></div>
-            <div>販売ステータス</div>
+            <div>税込価格(税抜価格)<%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)</div>
+            <div>販売ステータス<% if @item.is_active %>
+                       <p class="text-success">販売中</p>
+                     <% else %>
+                       <p class="text-muted">販売停止中</p>
+                     <%end%></div>
             <%= link_to "編集する", edit_admin_item_path(@item.id) %>
           </div>
         </div>

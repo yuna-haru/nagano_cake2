@@ -10,22 +10,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :genres, only: [:create, :index, :edit, :update]
-  end
-  namespace :admin do
     resources :items, only: [:new, :create, :index, :edit, :update, :show]
-  end
-
-  namespace :admin do
-   resources :customers, only: [:index, :show, :edit, :update]
-  end
-
-   namespace :admin do
+    resources :customers, only: [:index, :show, :edit, :update]
     resources :orders, only: [:show, :update]
+    get '/' => 'homes#top'
   end
 
-  namespace :admin do
-    resources :homes, only: [:top]
-  end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,7 +1,7 @@
-<div>
-  <div>
-    <div>
-      <h5>会員一覧</h5>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-xl-11">
+      <h5 class="mt-2">会員一覧</h5>
 
         <div>
           <div>
@@ -19,8 +19,8 @@
                 <tbody>
                   <% @customer.each do |customer|%>
                   <tr>
-                    <td><p></p></td>
-                    <td><p><%= customer.name %></p></td>
+                    <td><p><%= customer.id %></p></td>
+                    <td><p><%= customer.first_name %> <%= customer.last_name %></p></td>
                     <td><p><%= customer.email %></p></td>
                     <td><p> </p></td>
                   </tr>

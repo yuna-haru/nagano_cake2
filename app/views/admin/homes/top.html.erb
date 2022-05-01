@@ -15,8 +15,8 @@
            <% @order.each do |order|%>
            <tr>
             <td><p><%= order.created_at %></p></td>
-            <td><p><%= @customer.name %></p></td>
-            <td><p><%= @customer.amount %></p></td>
+            <td><p><%= order.customer.first_name %><%= order.customer.last_name %></p></td>
+            <td><p><%= order.customer.amount %></p></td>
             <td><p><%= order.order_status %></p></td>
           </tr>
           <% end %>
