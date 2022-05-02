@@ -1,34 +1,49 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-xl-11">
-      <h5 class="mt-2 mt-2 ml-3 px-2 border bg-light d-inline">商品新規登録</h5>
+
+      <div style="margin: 50px 0px 50px 30px;">
+        <h5 class="mt-2 mt-2 ml-3 px-2 border bg-light d-inline">商品新規登録</h5>
+      </div>
 
       <div class="row">
         <div class="mx-auto mt-5">
           <%= form_with model: @item, url: admin_items_path do |f| %>
 
-            <label for="item_image" class="mr-5">商品画像</label>
+            <span style="margin-right: 90px;">
+              <label for="item_image">商品画像</label>
+            </span>
             <%= f.file_field :image, accept: "image/*", id:"item_image" %><br>
 
-            <label for="item_new" class="mr-5">商品名</label>
+            <span style="margin-right: 105px;">
+              <label for="item_new">商品名</label>
+            </span>
             <%= f.text_field :name, id:"item_new" %><br>
 
-            <label for="item_introduction" class="mr-5">商品説明</label>
+            <span style="margin-right: 90px;">
+              <label for="item_introduction">商品説明</label>
+            </span>
             <%= f.text_area :introduction, id:"item_introduction" %><br>
 
-            <label for="item_genre" class="mr-5">ジャンル</label>
+            <span style="margin-right: 90px;">
+              <label for="item_genre">ジャンル</label>
+            </span>
             <%= f.collection_select(:genre_id, Genre.all, :id, :name) %><br>
 
-            <label for="item_price" class="mr-5">税抜価格</label>
+            <span style="margin-right: 90px;">
+              <label for="item_price">税抜価格</label>
+            </span>
             <%= f.text_field :price, id:"item_price" %>円<br>
 
-            <label for="item_status" class="mr-5">販売ステータス</label>
-            <%= f.label :is_active, '販売中', id:"item_status", value: TRUE %>
-            <%= f.radio_button :is_active, '1' %>
-            <%= f.label :is_active, '販売停止', id:"item_status", value: FALSE %>
-            <%= f.radio_button :is_active, '0' %><br>
+            <span style="margin-right: 40px;">
+              <label>販売ステータス</label>
+            </span>
+            <%= f.label :is_active, '販売中', for:"item_status", value: TRUE %>
+            <%= f.radio_button :is_active, '1', id:"item_status"%>
+            <%= f.label :is_active, '販売停止', for:"item_status_teisi", value: FALSE %>
+            <%= f.radio_button :is_active, '0', id:"item_status_teisi" %><br>
 
-            <%= f.submit '新規投稿', class: 'btn btn-success nx-auto ml-6' %>
+            <div style="margin-left: 160px;"><%= f.submit '新規投稿', class: 'btn btn-success' %></div>
           <% end %>
           </div>
         </div>

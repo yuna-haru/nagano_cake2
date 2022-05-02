@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-xl-11">
+
+      <div style="margin: 50px 0px 50px 30px;">
+        <h5 class="my-4 ml-3 px-2 border bg-light d-inline">マイページ</h5>
+      </div>
+
+      <div>
+
+        <p>登録情報</p><%= link_to "編集する", edit_public_customer_path(@customer.id), class: 'btn btn-success' %>
+
+        <div>
+
+          <span>氏名</span>
+          <%= @customer.first_name %> <%= @customer.last_name %><br>
+
+          <span>カナ</span>
+          <%= @customer.first_name_kana %> <%= @customer.last_name_kana %><br>
+
+          <span>郵便番号</span>
+          <%= @customer.postal_code %><br>
+
+          <span>住所</span>
+          <%= @customer.address %><br>
+
+          <span>メールアドレス</span>
+          <%= @customer.email %><br>
+
+          <span>配送先</span>
+
+          <span>注文履歴</span>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

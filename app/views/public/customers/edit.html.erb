@@ -3,14 +3,11 @@
     <div class="mx-auto col-xl-11">
 
       <div style="margin: 50px 0px 50px 30px;">
-        <h5 class="my-4 ml-3 px-2 border bg-light d-inline">
-          <%= @customer.first_name %> <%= @customer.last_name %>さんの会員情報編集</h5>
+        <h5 class="my-4 ml-3 px-2 border bg-light d-inline">会員情報編集</h5>
       </div>
 
-      <%= form_with model: @customer, url: admin_customer_path(@customer.id) do |f| %>
+           <%= form_with model: @customer, url: public_customer_path(@customer.id) do |f| %>
 
-        <span style="margin-right: 105px;">会員ID</span>
-        <%= @customer.id %><br>
 
         <span style="margin-right: 120px;"><label for="name">氏名</label></span>
         <%= f.text_field :first_name, id:"name" %> <%= f.text_field :last_name, id:"name" %><br>
@@ -30,11 +27,12 @@
         <span style="margin-right: 42px;"><label for="email">メールアドレス</label></span>
         <%= f.text_field :email, id:"email" %><br>
 
-        <span>会員ステータス</span><br>
 
-        <span style="margin-left: 160px;"><%= f.submit '変更を保存', class: 'btn btn-success nx-auto ml-6' %></span>
+        <span style="margin-left: 160px;"><%= f.submit '編集内容を保存', class: 'btn btn-success nx-auto ml-6' %></span>
+        <span><%= link_to "退会する", public_customers_withdraw_path, method: :patch %></span>
 
       <% end %>
+
 
     </div>
   </div>

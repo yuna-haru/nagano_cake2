@@ -2,9 +2,11 @@
   <div class="row">
     <div class="mx-auto col-xl-11">
 
+    <div style="margin: 50px 0px 50px 30px;">
       <h5 class="my-4 ml-3 px-2 border bg-light d-inline">商品詳細</h5>
+    </div>
 
-      <div class="flex-row">
+      <div style="display: flex">
 
           <div class="col-md-4 py-5">
             <% if @item.image.attached? %>
@@ -15,24 +17,31 @@
           </div>
 
           <div class="col-md-7">
-            <div class="mr-6">商品名 <%= @item.name %></div>
+            <div style="margin-bottom: 10px;">
+              <span style="margin-right: 105px;">商品名</span><%= @item.name %>
+            </div>
+            <div style="margin-bottom: 10px;">
+              <span style="margin-right: 90px;">商品説明</span><%= @item.introduction %>
+            </div>
+            <div style="margin-bottom: 10px;">
+              <span style="margin-right: 90px;">ジャンル</span><%= @item.genre.name %>
+            </div>
+            <div style="margin-bottom: 10px;">
+              <span class="mr-3">税込価格(税抜価格)</span><%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円
+            </div>
+            <div style="margin-bottom: 10px;">
+              <span style="margin-right: 40px;">販売ステータス</span><% if @item.is_active %>
+                <span class="text-success">販売中</span>
+              <% else %>
+                <span class="text-muted">販売停止中</span>
+              <%end%>
+            </div>
 
-            <div>商品説明<%= @item.introduction %></div>
-
-            <div>ジャンル<%= @item.genre.name %></div>
-
-            <div>税込価格(税抜価格)<%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円</div>
-
-            <div class="text-nowrap">販売ステータス<% if @item.is_active %>
-              <span class="text-success">販売中</span>
-            <% else %>
-              <span class="text-muted">販売停止中</span>
-            <%end%></div>
-
-            <%= link_to "編集する", edit_admin_item_path(@item.id), class: 'btn btn-success nx-auto ml-6' %>
+            <%= link_to "編集する", edit_admin_item_path(@item.id), class: 'btn btn-success', style: 'margin-left: 80px;' %>
           </div>
 
       </div>
+
 
     </div>
   </div>

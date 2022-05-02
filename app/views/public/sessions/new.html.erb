@@ -1,26 +1,42 @@
-<h2>Log in</h2>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-xl-11">
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+      <div style="margin: 50px 0px 30px 30px;">
+        <h5 class="border bg-light d-inline">ログイン</h5>
+      </div>
+      <div style="margin: 30px 70px; 30px 0px">
+         <p class="border bg-light d-inline">会員の方はこちらからログイン</p>
+      </div>
 
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
 
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+        <div class="field">
+          <span style="margin-right: 30px;"><%= f.label :email, "メールアドレス" %></span>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+         </div>
+
+        <div class="field">
+          <span style="margin-right: 63px;"><%= f.label :password, "パスワード" %></span>
+          <%= f.password_field :password, autocomplete: "current-password" %>
+        </div>
+
+        <div style="margin: 20px 0px 30px 150px;">
+          <%= f.submit "ログイン", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+
+      <div style="margin: 30px 70px; 30px 0px">
+        <p class="border bg-light d-inline">会員登録がお済でない方</p>
+      </div>
+      <div style="margin: 0px 70px 30px 90px;">
+        <p><%= link_to "こちら", new_customer_registration_path %>から新規登録を行ってください</p>
+      </div>
+
+      <%#= render "public/shared/links" %>
+
+
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
-
-<%= render "public/shared/links" %>
+</div>

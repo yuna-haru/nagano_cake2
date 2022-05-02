@@ -1,15 +1,35 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-xl-11">
-      <h5 class="mt-2"><%= customer.name %>さんの会員詳細</h5>
-      <p>会員ID</p><p></p>
-      <p>氏名</p><p><%= customer.first_name %> <%= customer.last_name %></p>
-      <p>フリガナ</p><p><%= customer.first_name_kana %> <%= customer.last_name_kana %></p>
-      <p>郵便番号</p><p><%= customer.postal_code %></p>
-      <p>住所</p><p><%= customer.address %></p>
-      <p>電話番号</p><p><%= customer.telephone_number %></p>
-      <p>メールアドレス</p><p><%= customer.email %></p>
-      <p>会員ステータス</p>
+
+      <div style="margin: 50px 0px 50px 30px;">
+        <h5 class="my-4 ml-3 px-2 border bg-light d-inline">
+          <%= @customer.first_name %> <%= @customer.last_name %>さんの会員詳細
+        </h5>
+      </div>
+
+      <span style="margin-right: 105px;">会員ID</span>
+      <%= @customer.id %><br>
+
+      <span style="margin-right: 120px;">氏名</span>
+      <%= @customer.first_name %> <%= @customer.last_name %><br>
+
+      <span style="margin-right: 100px;">フリガナ</span>
+      <%= @customer.first_name_kana %> <%= @customer.last_name_kana %><br>
+
+      <span style="margin-right: 95px;">郵便番号</span>
+      <%= @customer.postal_code %><br>
+
+      <span style="margin-right: 120px;">住所</span>
+      <%= @customer.address %><br>
+
+      <span style="margin-right: 95px;">電話番号</span>
+      <%= @customer.telephone_number %><br>
+
+      <span style="margin-right: 50px;">メールアドレス</span>
+      <%= @customer.email %><br>
+
+      <span style="margin-right: 50px;">会員ステータス</span>
 
     </div>
   </div>

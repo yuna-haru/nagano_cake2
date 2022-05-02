@@ -2,34 +2,51 @@
   <div class="row">
     <div class="mx-auto col-xl-11">
 
-      <h5 class="my-4 ml-3 px-2 border bg-light d-inline">商品編集</h5>
+      <div style="margin: 50px 0px 50px 30px;">
+        <h5 class="my-4 ml-3 px-2 border bg-light d-inline">商品編集</h5>
+      </div>
 
         <div class="row">
-         <div class="ml-6">
+           <div class="mx-auto mt-5">
 
-          <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
+            <%= form_with model: @item, url: admin_item_path(@item.id) do |f| %>
 
-            <label for="edit_image">商品画像</label><%= f.file_field :image, accept: "image/*", id:"edit_image" %><br>
+              <span style="margin-right: 90px;">
+                <label for="edit_image">商品画像</label>
+              </span>
+              <%= f.file_field :image, accept: "image/*", id:"edit_image" %><br>
 
-            <label for="edit_name">商品名</label> <%= f.text_field :name, id:"edit_name" %><br>
+              <span style="margin-right: 105px;">
+                <label for="edit_name">商品名</label>
+              </span>
+              <%= f.text_field :name, id:"edit_name" %><br>
 
-            <label for="edit_introduction">商品説明</label> <%= f.text_area :introduction, id:"edit_introduction" %><br>
+              <span style="margin-right: 90px;">
+                <label for="edit_introduction">商品説明</label>
+              </span>
+              <%= f.text_area :introduction, id:"edit_introduction" %><br>
 
-            <label >ジャンル</label>　<%= f.collection_select(:genre_id, Genre.all, :id, :name) %><br>
+              <span style="margin-right: 90px;">
+                <label>ジャンル</label>
+              </span>
+              <%= f.collection_select(:genre_id, Genre.all, :id, :name) %><br>
 
-            <label for="edit_price">税抜価格</label> <%= f.text_field :price, id:"edit_price" %>円<br>
+              <span style="margin-right: 90px;">
+                <label for="edit_price">税抜価格</label>
+              </span>
+              <%= f.text_field :price, id:"edit_price" %>円<br>
 
-            販売ステータス
-            <%= f.label :is_active, '販売中', value: TRUE, id:"status" %>
-            <%= f.radio_button :is_active, '1', id:"status" %>
-            <%= f.label :is_active, '販売停止', value: FALSE, id:"status" %>
-            <%= f.radio_button :is_active, '0', id:"status" %><br>
+              <span style="margin-right: 40px;">販売ステータス</span>
+              <%= f.label :is_active, '販売中', value: TRUE, for:"status" %>
+              <%= f.radio_button :is_active, '1', id:"status" %>
+              <%= f.label :is_active, '販売停止', value: FALSE, for:"status_f" %>
+              <%= f.radio_button :is_active, '0', id:"status_f" %><br>
 
-            <%= f.submit '変更を保存', class: 'btn btn-success nx-auto ml-6' %>
-          <% end %>
+              <span style="margin-left: 160px;"><%= f.submit '変更を保存', class: 'btn btn-success nx-auto ml-6' %></span>
+            <% end %>
 
+          </div>
         </div>
-      </div>
 
     </div>
   </div>
