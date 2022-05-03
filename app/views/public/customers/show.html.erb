@@ -8,7 +8,7 @@
 
       <div>
 
-        <p>登録情報</p><%= link_to "編集する", edit_public_customer_path(@customer.id), class: 'btn btn-success' %>
+        <span>登録情報</span><%= link_to "編集する", edit_public_customer_path(@customer), class: 'btn btn-success' %>
 
         <div>
 
@@ -23,6 +23,9 @@
 
           <span>住所</span>
           <%= @customer.address %><br>
+
+          <span>電話番号</span>
+          <%= @customer.telephone_number %><br>
 
           <span>メールアドレス</span>
           <%= @customer.email %><br>

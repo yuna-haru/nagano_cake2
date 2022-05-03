@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-xl-11">
+
+      <div style="margin: 50px 0px 50px 30px;">
+        <h5 class="my-4 ml-3 px-2 border bg-light d-inline">配送先登録/一覧</h5>
+      </div>
+
+      <div>
+        <%= form_with model: @addresse, url: public_addresses_path do |f| %>
+          <span><label for="postal_code">郵便番号(ハイフンなし)</label></span>
+          <%= f.text_field :postal_code, id:"postal_code" %><br>
+          <span><label for="address">住所</label></span>
+          <%= f.text_area :address, id:"address" %><br>
+          <span><label for="name">宛名</label></span>
+          <%= f.text_field :name, id:"name" %>
+          <span style="margin-left: 160px;">
+            <%= f.submit '新規登録', class: 'btn btn-success nx-auto ml-6' %>
+          </span>
+        <% end %>
+      </div>
+
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>郵便番号</th>
+              <th>住所</th>
+              <th>宛名</th>
+              <th colspan="2"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @addressed.each do |addresse|%>
+            <tr>
+              <td>
+                <p><%= addresse.postal_code %></p>
+              </td>
+              <td>
+                <p><%= addresse.address %></p>
+              </td>
+              <td>
+                <p><%= addresse.name %></p>
+              </td>
+              <td>
+               <span>編集する</span>
+               <span>削除する</span>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</div>

@@ -17,13 +17,16 @@ Rails.application.routes.draw do
   end
 
   namespace :public do
-    patch '/customers/withdraw' => 'customers#withdraw'
-    resources :customers, only: [:edit, :update, :confirm]
-    get 'customers/mypage' => 'customers#show'
-
     get '/' => 'homes#top'
     get 'about' => 'homes#about', as:'about'
+    patch '/customers/withdraw' => 'customers#withdraw'
+    resources :customers, only: [:edit, :update]
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/confirm' => 'customers#confirm'
+    resources :addresses, only: [:create, :index, :edit, :update, :destroy]
+
   end
+
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
