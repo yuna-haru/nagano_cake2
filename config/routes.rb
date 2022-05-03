@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     get 'customers/mypage' => 'customers#show'
     get 'customers/confirm' => 'customers#confirm'
     resources :addresses, only: [:create, :index, :edit, :update, :destroy]
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:create, :index, :update, :destroy]
+    delete '/cart_items' => 'cart_items#destory_all'
 
   end
 
