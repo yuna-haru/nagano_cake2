@@ -1,2 +1,32 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-xl-11">
+
+      <div style="display: flex">
+
+          <div class="col-md-4 py-5">
+            <% if @item.image.attached? %>
+              <%= image_tag @item.image %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+            <% end %>
+          </div>
+
+          <div class="col-md-7">
+
+            <span><%= @item.name %></span>
+            <span><%= @item.introduction %></span>
+            <span><%= @item.add_tax_price.to_s(:dalimited) %>(税込)</span>
+
+            <div>
+              <%= form_with model: @item, url: public_item_path do |f| %>
+                <%= f.hidden_field :, :value => "" %>
+            </div>
+
+          </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>

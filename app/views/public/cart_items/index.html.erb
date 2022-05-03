@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-xl-11">
+
+      <div style="margin: 50px 0px 50px 30px;">
+        <h5 class="my-6 ml-3 px-2 border bg-light d-inline">ショッピングカート</h5>
+      </div>
+
+      <table class="table">
+        <thead class="border bg-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th colspan="1"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @item.each do |item|%>
+          <tr>
+            <td>
+              <%= item.name %>
+            </td>
+            <td>
+              <%= @cart_item.amount %>
+            </td>
+            <td>
+              <%= @item.add_tax_price.to_s(:dalimited) %>
+            </td>
+            <td>
+
+            </td>
+            <td>
+             削除する
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
