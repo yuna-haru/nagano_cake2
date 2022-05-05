@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-xl-11">
+
+      <div style="margin: 50px 0px 50px 30px;">
+        <h5 class="my-6 ml-3 px-2 border bg-light d-inline">注文情報入力</h5>
+      </div>
+
+      <table class="table">
+        <thead class="border bg-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価(税込)</th>
+            <th>数量</th>
+            <th>小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.each do |order|%>
+          <tr>
+            <td>
+              <%= order.cart_item.name %>
+            </td>
+            <td>
+              <%= order.cart_item.subtotal %>
+            </td>
+            <td>
+              <%= order.cart_item.amount %>
+            </td>
+            <td>
+              <%= order.cart_item.subtotal %>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <table class="table">
+        <thead class="border bg-light">
+          <tr>
+            <th>送料</th>
+            <th>商品合計</th>
+            <th>請求金額</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @total = 0 %>
+          <% @oder.each do |oder|%>
+          <tr>
+
+            <td></td>
+            <tb><span><% @total += cart_item.subtotal %></span></tb>
+            <td></td>
+
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+
+      <span>支払方法 <%= oder.payment_method %></span>
+      <span>お届け先 <%= oder.address %></span>
+
+
+
+    </div>
+  </div>
+</div>

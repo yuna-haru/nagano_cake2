@@ -16,7 +16,7 @@
        <nav class="navbar navbar-light bg-light">
         <div class="container">
             <ul class="navbar-nav flex-row ml-auto">
-              <% if customer_signed_in? %>
+              <% if admin_signed_in? %>
                 <li class="nav-item">
                   <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
                 </li>
@@ -29,7 +29,20 @@
                 <li class="nav-item">
                   <%= link_to "ジャンル一覧", admin_genres_path, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
                 </li>
+                <li>
+                  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
+                </li>
 
+              <% elsif customer_signed_in? %>
+                <li>
+                  <%= link_to "マイページ", public_customers_mypage_path, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
+                </li>
+                <li>
+                  <%= link_to "商品一覧", public_items_path, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
+                </li>
+                <li>
+                  <%= link_to "カート", public_cart_items_path, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
+                </li>
                 <li>
                   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
                 </li>
@@ -38,7 +51,7 @@
                   <%= link_to "About", public_about_path, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
                 </li>
                 <li class="nav-item">
-                  <%= link_to "商品一覧", admin_items_path, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
+                  <%= link_to "商品一覧", public_items_path, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>
                 </li>
                 <li class="nav-item">
                   <%= link_to "新規登録", new_customer_registration_path, class: 'nav-link text-dark py-1 px-1 mx-2 border rounded' %>

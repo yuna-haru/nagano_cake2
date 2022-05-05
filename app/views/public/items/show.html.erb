@@ -14,13 +14,17 @@
 
           <div class="col-md-7">
 
-            <span><%= @item.name %></span>
-            <span><%= @item.introduction %></span>
-            <span><%= @item.add_tax_price.to_s(:dalimited) %>(税込)</span>
+            <span><%= @item.name %></span><br>
+            <span><%= @item.introduction %></span><br>
+            <span><%= @item.with_tax_price%>(税込)円</span><br>
 
             <div>
-              <%= form_with model: @item, url: public_item_path do |f| %>
-                <%= f.hidden_field :, :value => "" %>
+              <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+                <%= f.hidden_field :item_id, :value => @item.id %>
+                <%= f.select :amount, *[1..10] %>
+                <span class="ml-5"><%= f.submit "カートに入れる", class: 'btn btn-success' %></span>
+              <% end %>
+
             </div>
 
           </div>

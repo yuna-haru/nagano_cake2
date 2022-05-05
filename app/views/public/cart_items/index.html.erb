@@ -4,6 +4,7 @@
 
       <div style="margin: 50px 0px 50px 30px;">
         <h5 class="my-6 ml-3 px-2 border bg-light d-inline">ショッピングカート</h5>
+        <span><%= link_to "カートを空にする", public_destroy_all_cart_items_path,  method: :delete, class: 'btn btn-danger' %></span>
       </div>
 
       <table class="table">
@@ -17,27 +18,39 @@
           </tr>
         </thead>
         <tbody>
-          <% @item.each do |item|%>
+          <% @total = 0 %>
+          <% @cart_items.each do |cart_item|%>
           <tr>
             <td>
-              <%= item.name %>
+              <%= cart_item.item.name %>
             </td>
             <td>
-              <%= @cart_item.amount %>
+              <%= cart_item.subtotal %>
             </td>
             <td>
-              <%= @item.add_tax_price.to_s(:dalimited) %>
+              <%= form_with model: cart_item, url: public_cart_items_path, method: :post do |f| %>
+                <%= f.hidden_field :item_id, :value => cart_item.item.id %>
+                <%= f.select :amount, *[1..10] %>
+                <span class="ml-5"><%= f.submit "変更", class: 'btn btn-success' %></span>
+              <% end %>
             </td>
             <td>
-
+              <%= cart_item.subtotal%>
             </td>
             <td>
-             削除する
+             <%= link_to "削除する", public_cart_item_path(cart_item.id), method: :delete, class: 'btn btn-danger' %>
             </td>
+            <tb><span><% @total += cart_item.subtotal %></span></tb>
           </tr>
           <% end %>
         </tbody>
       </table>
+
+      <div>
+        <span><%= link_to "買い物を続ける", public_path, class:'btn btn-primary' %></span>
+        <span>合計金額 <%= @total %></span><br>
+        <span>情報入力に進む</span>
+      </div>
 
     </div>
   </div>

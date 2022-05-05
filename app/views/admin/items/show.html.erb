@@ -26,7 +26,7 @@
               <span style="margin-right: 90px;">ジャンル</span><%= @item.genre.name %>
             </div>
             <div style="margin-bottom: 10px;">
-              <span class="mr-3">税込価格(税抜価格)</span><%= @item.add_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円
+              <span class="mr-3">税込価格(税抜価格)</span><%= @item.with_tax_price.to_s(:dalimited) %>(<%= @item.price %>)円
             </div>
             <div style="margin-bottom: 10px;">
               <span style="margin-right: 40px;">販売ステータス</span><% if @item.is_active %>

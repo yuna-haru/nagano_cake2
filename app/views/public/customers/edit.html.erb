@@ -6,7 +6,8 @@
         <h5 class="my-4 ml-3 px-2 border bg-light d-inline">会員情報編集</h5>
       </div>
 
-           <%= form_with model: @customer, url: public_customer_path(@customer.id) do |f| %>
+
+      <%= form_with model: @customer, url: public_customer_path(@customer.id) do |f| %>
 
 
         <span style="margin-right: 120px;"><label for="name">氏名</label></span>
@@ -19,7 +20,7 @@
         <%= f.text_field :postal_code, id:"postal_code" %><br>
 
         <span style="margin-right: 122px;"><label for="addres">住所</label></span>
-        <%= f.text_field :address, id:"addres" %><br>
+        <%= f.text_area :address, id:"addres" %><br>
 
         <span style="margin-right: 90px;"><label for="telephone">電話番号</label></span>
         <%= f.text_field :telephone_number, id:"telephone" %><br>
