@@ -16,19 +16,19 @@
           </tr>
         </thead>
         <tbody>
-          <% @order.each do |order|%>
+          <% @cart_item.each do |cart_item|%>
           <tr>
             <td>
-              <%= order.cart_item.name %>
+              <%= cart_item.item.name %>
             </td>
             <td>
-              <%= order.cart_item.subtotal %>
+              <%= cart_item.subtotal %>
             </td>
             <td>
-              <%= order.cart_item.amount %>
+              <%= cart_item.amount %>
             </td>
             <td>
-              <%= order.cart_item.subtotal %>
+              <%= cart_item.subtotal %>
             </td>
           </tr>
           <% end %>
@@ -44,21 +44,21 @@
           </tr>
         </thead>
         <tbody>
-          <% @total = 0 %>
-          <% @oder.each do |oder|%>
+
           <tr>
 
             <td></td>
-            <tb><span><% @total += cart_item.subtotal %></span></tb>
+            <tb><span><% @total %></span></tb>
             <td></td>
 
           </tr>
-          <% end %>
+
         </tbody>
       </table>
 
-      <span>支払方法 <%= oder.payment_method %></span>
-      <span>お届け先 <%= oder.address %></span>
+      <span>支払方法 <%= @oder.payment_method %></span>
+      <span>お届け先<p><%= @order.postal_code %> <%= @order.address %><br>
+             <%= @order.first_name %><%= @order.last_name %></p></span>
 
 
 
