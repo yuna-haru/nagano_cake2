@@ -21,7 +21,10 @@
                     <td class="px-3"><p><%= customer.id %></p></td>
                     <td class="px-3"><p><%= customer.first_name %> <%= customer.last_name %></p></td>
                     <td class="px-3"><p><%= customer.email %></p></td>
-                    <td><p></p></td>
+                    <td class="px-3"><p><%= if customer.is_deleted %></p>
+                                        <p class="text-success">有効</p>
+                                        <% else %>
+                                        <p class="text-muted">退会</p></td>
                   </tr>
                   <% end %>
                 </tbody>
