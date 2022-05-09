@@ -2,16 +2,20 @@
   <div class="row">
     <div class="mx-auto col-xl-11">
 
-      <h5 class="my-4 ml-3 px-2 border bg-light d-inline">注文履歴詳細</h5>
-
+      <div style="margin: 50px 0px 50px 30px;">
+        <h5 class="my-4 ml-3 px-2 border bg-light d-inline ">注文履歴詳細</h5>
+      </div>
       <div>
-        <div>購入者 <%= link_to @custmer.first_name @custmer.last_name, admin_customer(@custmer.id) %></div>
-        <div>注文日 <%= @order.created_at %></div>
+        <div>購入者 <%= link_to admin_customer_path(@customer.id) do %>
+                      <%= @customer.first_name %><%= @customer.last_name %>
+                   <% end %></div>
+        <div>注文日 <%= @order.created_at.strftime('%Y/%m/%d') %></div>
         <div>配送先 <%= @customer.address %></div>
         <div>支払方法 <%= @order.payment_method %></div>
-        <%= form_with model: order, url: admin_orders_path, method: :patch, local: true do |f| %>
-        <div>注文ステータス <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %></div>
-        <div><%= f.submit "更新" , class: "btn btn-outline-success" %></div>
+        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
+        <div>注文ステータス <%= f.select :order_status, Order.order_statuses.keys %>
+        　　　　　　　　　　　　　　　　　　　　<%= f.submit "更新", class:'btn btn-success' %>
+            　　　　　　　　　　　　<% end %></div>
       </div>
 
       <div>
@@ -28,15 +32,17 @@
              </tr>
           </thead>
            <tbody>
-            <% @order.each do |order|%>
-          　<tr>
-                <td class="px-3"><p><%= oder.item.name %></p></td>
-                <td class="px-3"><p><%= cart_item.item.with_tax_price %></p></td>
-                <td class="px-3"><p><%= order.item.amount %></p></td>
-                <td class="px-3"><p><%= (cart_item.price * 1.1).floor * cart_item.amount %></p></td>
-                <%= form_with model: order, url: admin_orders_path, method: :patch, local: true do |f| %><
-                    <td class="px-3"><p><%= f.select :order_detail_status, Order.order_detail_status.keys, class: "order_detail_status" %></p></td>
-                    <td class="px-3"><%= f.submit "更新" , class: "btn btn-outline-success" %></td>
+            <% @order.order_details.each do |order_detail|%>
+            <tr>
+                <td class="px-3"><p><%= order_detail.item.name %></p></td>
+                <td class="px-3"><p><%= order_detail.item.with_tax_price %></p></td>
+                <td class="px-3"><p><%= order_detail.amount %></p></td>
+                <td class="px-3"><p><%= (order_detail.price * 1.1).floor * order_detail.amount %></p></td>
+                <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true do |f| %>
+                   <%#= f.select :order_detail_status, OrderDetail.order_detail_statuses.keys.map.with_index{ |k,i| [k,i]} %>
+                    <td class="px-3"><p><%= f.select :order_detail_status, OrderDetail.order_detail_statuses.map{ |k,v| [k,v]} %></p></td>
+                    <td class="px-3"><%= f.submit "更新", class:'btn btn-success' %></td>
+
                 <% end %>
             </tr>
             <% end %>
@@ -45,8 +51,11 @@
       </div>
 
       <div>
-        <p>合計金額</p>
-        <p>送料</p>
+        <p>商品合計<%# @total = 0 %>
+                    <%# @cart_item.each do |cart_item|%></p>
+                      <%#= @total += cart_item.subtotal %>
+                    <%# end %>
+        <p>送料<%= @order.payment %></p>
         <p>請求金額合計</p>
       </div>
 

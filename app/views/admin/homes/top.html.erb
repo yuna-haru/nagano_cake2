@@ -1,7 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="mx-auto col-xl-11">
-      <h5 class="my-4 ml-3 px-2 border bg-light d-inline">注文履歴一覧</h5>
+
+      <div style="margin: 50px 0px 50px 30px;">
+        <h5 class="my-4 ml-3 px-2 border bg-light d-inline">注文履歴一覧</h5>
+      </div>
       <table>
         <thead>
           <tr>
@@ -14,9 +17,9 @@
         <tbody>
            <% @order.each do |order|%>
            <tr>
-            <td class="px-3"><p><%= order.created_at %></p></td>
+            <td class="px-3"><p><%= order.created_at.strftime('%Y/%m/%d') %></p></td>
             <td class="px-3"><p><%= order.customer.first_name %><%= order.customer.last_name %></p></td>
-            <td class="px-3"><p><%= order.customer.amount %></p></td>
+            <td class="px-3"><p><%= order.order_details.sum(:amount) %></p></td>
             <td class="px-3"><p><%= order.order_status %></p></td>
           </tr>
           <% end %>

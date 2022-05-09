@@ -30,7 +30,11 @@
         <span style="margin-right: 42px;"><label for="email">メールアドレス</label></span>
         <%= f.text_field :email, id:"email" %><br>
 
-        <span>会員ステータス</span><br>
+        <span style="margin-right: 40px;">会員ステータス</span>
+        <%= f.label :is_deleted, '有効', value: FALSE, for:"status" %>
+        <%= f.radio_button :is_deleted, '1', id:"status" %>
+        <%= f.label :is_deleted, '退会', value: TRUE, for:"status_f" %>
+        <%= f.radio_button :is_deleted, '0', id:"status_f" %><br>
 
         <span style="margin-left: 160px;"><%= f.submit '変更を保存', class: 'btn btn-success nx-auto ml-6' %></span>
 

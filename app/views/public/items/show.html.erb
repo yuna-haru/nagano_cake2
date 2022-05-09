@@ -4,6 +4,7 @@
 
       <div style="display: flex">
 
+
           <div class="col-md-4 py-5">
             <% if @item.image.attached? %>
               <%= image_tag @item.image %>
@@ -14,9 +15,9 @@
 
           <div class="col-md-7">
 
-            <span><%= @item.name %></span><br>
+            <span class="font-weight-bold"><%= @item.name %></span><br>
             <span><%= @item.introduction %></span><br>
-            <span><%= @item.with_tax_price%>(税込)円</span><br>
+            <span class="font-weight-bold"><%= @item.with_tax_price%></span><span class="text-lowercase">(税込)</span><br>
 
             <div>
               <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
@@ -24,10 +25,9 @@
                 <%= f.select :amount, *[1..10] %>
                 <span class="ml-5"><%= f.submit "カートに入れる", class: 'btn btn-success' %></span>
               <% end %>
-
             </div>
-
           </div>
+
 
       </div>
 

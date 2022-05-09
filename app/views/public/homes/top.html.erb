@@ -2,16 +2,16 @@
   <div class="row">
     <div class="mx-auto col-xl-11">
 
-      <p>
-        ようこそ、ながのCAKEへ！<br>
-        このサイトは、ケーキ販売のECサイトになります。<br>
-        会員でない方も商品の閲覧はできますが、<br>
-        購入には会員登録が必要になります。
-      </p>
+      <div class="d-flex justify-content-center">
+        <p>ようこそ、ながのCAKEへ！<br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。</p>
+      </div>
 
       <div>
-        <h5>新着商品</h5>
-        <div>
+        <p class="font-weight-bold">新着商品</p>
+        <div class="d-flex flex-nowrap">
           <% @items.each do |item| %>
 
             <% if item.image.attached? %>
@@ -20,12 +20,17 @@
                 <%= image_tag 'no_image', size: "200x200" %>
             <% end %>
 
-            <%= item.name %>
-            <%= item.price %>円
+            <div class="d-flex flex-column bd-highlight mb-3">
+              <span class="text-nowrap"><%= link_to item.name, public_item_path(item.id) %></span>
 
-          <% end %>
+              <span class="p-2 bd-highlight"><%= item.price %>円</span>
+            </div>
 
-          <%= link_to "全ての商品を見る", admin_items_path %>
+          <% end %><br>
+
+        </div>
+        <div class="d-flex bd-highlight mb-3">
+          <span class="ml-auto p-2 bd-highlight"><%= link_to "全ての商品を見る", public_items_path %></span>
         </div>
       </div>
 

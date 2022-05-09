@@ -14,22 +14,31 @@
       <span style="margin-right: 120px;">氏名</span>
       <%= @customer.first_name %> <%= @customer.last_name %><br>
 
-      <span style="margin-right: 100px;">フリガナ</span>
+      <span style="margin-right: 90px;">フリガナ</span>
       <%= @customer.first_name_kana %> <%= @customer.last_name_kana %><br>
 
       <span style="margin-right: 95px;">郵便番号</span>
       <%= @customer.postal_code %><br>
 
-      <span style="margin-right: 120px;">住所</span>
+      <span style="margin-right: 125px;">住所</span>
       <%= @customer.address %><br>
 
       <span style="margin-right: 95px;">電話番号</span>
       <%= @customer.telephone_number %><br>
 
-      <span style="margin-right: 50px;">メールアドレス</span>
+      <span style="margin-right: 48px;">メールアドレス</span>
       <%= @customer.email %><br>
 
-      <span style="margin-right: 50px;">会員ステータス</span>
+      <span style="margin-right: 48px;">会員ステータス</span>
+      <% if @customer.is_deleted %>
+        <span class="text-success">有効</span>
+      <% else %>
+        <span class="text-muted">退会</span>
+      <% end %><br>
+
+      <%= link_to "編集する", edit_admin_customer_path, class:'btn btn-success', style:'margin-left: 160px;' %>
+
+      <%= link_to "注文履歴一覧を見る", admin_path, class:'btn btn-primary', style:'margin-left: 50px;' %>
 
     </div>
   </div>

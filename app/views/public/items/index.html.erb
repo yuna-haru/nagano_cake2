@@ -1,13 +1,12 @@
 <div class="container">
   <div class="row">
-    <div class="mx-auto">
+    <div class="mx-auto col-xl-11">
 
+      <div style="margin: 50px 0px 50px 30px;">
+        <span class="font-weight-bold">商品一覧</span>
+        <span>(全<%= @item.count %>件)</span>
+      </div>
 
-      <div>
-        <div>
-          <h5>商品一覧</h5>
-          <span>(全<%= @item.count %>件)</span>
-        </div>
 
         <% @item.each do |item| %>
 
@@ -17,13 +16,13 @@
             <%= image_tag 'no_image', size: "200x200" %>
           <% end %>
 
+
           <%= link_to item.name, public_item_path(item.id) %>
           <%= item.price %>
 
         <% end %>
 
         <%= paginate @items %>
-      </div>
 
 
     </div>

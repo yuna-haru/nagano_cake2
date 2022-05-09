@@ -6,8 +6,8 @@
         <h5 class="my-6 ml-3 px-2 border bg-light d-inline">注文履歴一覧</h5>
       </div>
 
-      <table class="mt-3">
-                <thead class="border bg-light mt-3">
+      <table class="table table-bordered">
+                <thead class="thead-light">
                   <tr class="block">
                     <th class="px-3" style="width: 10%"><h6>注文日</h6></th>
                     <th class="px-3" style="width: 50%"><h6>配送先</h6></th>
@@ -20,7 +20,7 @@
                 <tbody>
                   <% @order.each do |order|%>
                   <tr>
-                    <td class="px-3"><p><%= order.created_at %></p></td>
+                    <td class="px-3"><p><%= order.created_at.strftime('%Y/%m/%d') %></p></td>
                     <td class="px-3"><p><%= order.postal_code %> <%= order.address%><%= order.name %></p></td>
                     <td class="px-3"><p><% order.order_details.each do |order_detail| %></p>
                                          <%= order_detail.item.name %></td>

@@ -35,6 +35,13 @@ class Public::SessionsController < Devise::SessionsController
     end
 
 
+
+  end
+  def after_sign_in_path_for(resource)
+    public_customers_mypage_path
+  end
+  def after_sign_out_path_for(resource)
+   public_items_path
   end
 
   # If you have extra params to permit, append them to the sanitizer.
