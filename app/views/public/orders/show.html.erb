@@ -6,19 +6,16 @@
         <h5 class="my-6 ml-3 px-2 border bg-light d-inline">注文履歴詳細</h5>
       </div>
 
-      <div>
+      <div class="flex">
         <table class="table table-bordered">
-          <h6>注文情報</h6>
+          <h6 class="font-weight-bold">注文情報</h6>
           <tr><th class="table-secondary">注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td></tr>
           <tr><th class="table-secondary">配送先</th><td><%= @order.postal_code %> <%= @order.address%><%= @order.name %></td></tr>
           <tr><th class="table-secondary">支払方法</th><td><%= @order.payment_method_i18n %></td></tr>
           <tr><th class="table-secondary">ステータス</th><td><%= @order.order_status %></td></tr>
         </table>
-      </div>
-
-      <div>
         <table class="table table-bordered">
-          <h6>請求情報</h6>
+          <h6 class="font-weight-bold">請求情報</h6>
           <tr><th class="table-secondary">商品合計</th><td><% @total = 0 %>
                               <% @order.order_details.each do |order_detail|%>
                                 <% @total += order_detail.amount * order_detail.price %>
@@ -31,7 +28,7 @@
 
       <div>
         <table class="table table-bordered">
-          <h6>注文内容</h6>
+          <h6 class="font-weight-bold">注文内容</h6>
           <thead class="table-secondary">
             <tr>
               <th>商品</th>
@@ -41,7 +38,7 @@
             </tr>
           </thead>
           <tbody>
-            <% @order_detail.each do |order_detail|%>
+            <% @order_details.each do |order_detail|%>
             <tr>
               <td><%= order_detail.item.name %></td>
               <td><%= order_detail.item.with_tax_price%></td>

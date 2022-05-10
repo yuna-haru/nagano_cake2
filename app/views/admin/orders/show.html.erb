@@ -5,22 +5,38 @@
       <div style="margin: 50px 0px 50px 30px;">
         <h5 class="my-4 ml-3 px-2 border bg-light d-inline ">注文履歴詳細</h5>
       </div>
-      <div>
-        <div>購入者 <%= link_to admin_customer_path(@customer.id) do %>
-                      <%= @customer.first_name %><%= @customer.last_name %>
-                   <% end %></div>
-        <div>注文日 <%= @order.created_at.strftime('%Y/%m/%d') %></div>
-        <div>配送先 <%= @customer.address %></div>
-        <div>支払方法 <%= @order.payment_method %></div>
-        <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
-        <div>注文ステータス <%= f.select :order_status, Order.order_statuses.keys %>
-        　　　　　　　　　　　　　　　　　　　　<%= f.submit "更新", class:'btn btn-success' %>
-            　　　　　　　　　　　　<% end %></div>
+
+      <div style="margin-bottom: 10px;">
+        <div><span class="font-weight-bold">購入者</span>
+                      <span style="margin-left: 103px;">
+                        <%= link_to admin_customer_path(@customer.id) do %>
+                        <%= @customer.first_name %><%= @customer.last_name %>
+                      <% end %>
+                      </span></div>
+        <div><span class="font-weight-bold">注文日</span>
+                      <span style="margin-left: 103px;">
+                        <%= @order.created_at.strftime('%Y/%m/%d') %>
+                      </span></div>
+        <div><span class="font-weight-bold">配送先</span>
+                      <span style="margin-left: 103px;">
+                        <%= @customer.address %>
+                      </span></div>
+        <div><span class="font-weight-bold">支払方法</span>
+                      <span style="margin-left: 87px;">
+                        <%= @order.payment_method %>
+                      </span></div>
+                    <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
+        <div><span class="font-weight-bold">注文ステータス</span>
+                      <span style="margin-left: 40px;">
+                          <%= f.select :order_status, Order.order_statuses.keys %>
+        　　　　　　　　  　　　　　　　<%= f.submit "更新", class:'btn btn-success' %>
+                        <% end %>
+                      </span></div>
       </div>
 
       <div>
-        <table>
-          <thead>
+        <table class="table">
+          <thead class="bg-light">
             <tr>
               <th class="px-3 text-nowrap font-weight-bold" style="width: 30%"><h6>商品名</h6></th>
               <th class="px-3 text-nowrap font-weight-bold" style="width: 20%"><h6>単価(税込)</h6></th>
@@ -39,8 +55,8 @@
                 <td class="px-3"><p><%= order_detail.amount %></p></td>
                 <td class="px-3"><p><%= (order_detail.price * 1.1).floor * order_detail.amount %></p></td>
                 <%= form_with model: order_detail, url: admin_order_detail_path(order_detail.id), method: :patch, local: true do |f| %>
-                   <%#= f.select :order_detail_status, OrderDetail.order_detail_statuses.keys.map.with_index{ |k,i| [k,i]} %>
-                    <td class="px-3"><p><%= f.select :order_detail_status, OrderDetail.order_detail_statuses.map{ |k,v| [k,v]} %></p></td>
+
+                    <td class="px-3"><p><%= f.select :order_detail_status, OrderDetail.order_detail_statuses.keys %></p></td>
                     <td class="px-3"><%= f.submit "更新", class:'btn btn-success' %></td>
 
                 <% end %>
@@ -50,14 +66,15 @@
         </table>
       </div>
 
-      <div>
-        <p>商品合計<% @total = 0 %>
+      <div style="margin-bottom: 20px;">
+        <span class="font-weight-bold">商品合計</span>
+                    <span style="margin-left: 40px;"><% @total = 0 %>
                     <% @order.order_details.each do |order_detail|%>
                       <% @total += order_detail.amount * order_detail.price %>
                     <% end %>
-                    <%= @total %></p>
-        <p>送料<%= @order.payment %></p>
-        <p>請求金額合計<%= @total + @order.payment %></p>
+                    <%= @total %></span><br>
+        <span class="font-weight-bold">送料</span><span style="margin-left: 77px;"><%= @order.payment %></span><br>
+        <span class="font-weight-bold">請求金額合計</span><span style="margin-left: 14px;"><%= @total + @order.payment %></span><br>
       </div>
 
     </div>
