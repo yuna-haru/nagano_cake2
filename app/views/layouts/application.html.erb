@@ -15,6 +15,9 @@
     <header class="shadow-sm">
        <nav class="navbar navbar-light bg-light">
         <div class="container">
+          <div class="font-weight-light">
+            <%= link_to "LOGO", public_path, class: 'border rounded-pill text-info px-2 py-2' %>
+          </div>
             <ul class="navbar-nav flex-row ml-auto">
               <% if admin_signed_in? %>
                 <li class="nav-item">

@@ -20,8 +20,6 @@ class Public::OrdersController < ApplicationController
       @order.name = params[:order][:name]
       @order.address = params[:order][:address]
       @order.postal_code = params[:order][:postal_code]
-      @order.save
-      redirect_to public_orders_confirm_path
     end
       @cart_item = CartItem.all
       @order.payment = 800
