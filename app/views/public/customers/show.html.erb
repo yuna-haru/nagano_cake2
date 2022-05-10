@@ -8,7 +8,9 @@
 
       <div>
         <table class="table table-bordered">
-          <span class="font-weight-bold">登録情報</span><span style="margin-left:; 50px"><%= link_to "編集する", edit_public_customer_path(@customer), class: 'btn btn-success' %></span>
+          <div style="margin-bottom: 20px;">
+            <span class="font-weight-bold">登録情報</span><span style="margin-left: 44px;"><%= link_to "編集する", edit_public_customer_path(@customer), class: 'btn btn-success' %></span>
+          </div>
           <tr><th class="bg-light">氏名</th><td><%= @customer.first_name %> <%= @customer.last_name %></td></tr>
           <tr><th class="bg-light">カナ</th><td><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td></tr>
           <tr><th class="bg-light">郵便番号</th><td><%= @customer.postal_code %></td></tr>
@@ -16,8 +18,8 @@
           <tr><th class="bg-light">電話番号</th><td><%= @customer.telephone_number %></td></tr>
           <tr><th class="bg-light">メールアドレス</th><td><%= @customer.email %></td></tr>
         </table>
-        <span class="font-weight-bold">配送先</span><%= link_to "一覧を見る", public_addresses_path, class: 'btn btn-primary', style: 'margin-left:; 50px' %><br>
-        <span class="font-weight-bold">注文履歴</span><%= link_to "一覧を見る", public_orders_path, class: 'btn btn-primary', style: 'margin-left:; 50px' %>
+        <span class="font-weight-bold">配送先</span><%= link_to "一覧を見る", public_addresses_path, class: 'btn btn-primary', style: 'margin: 20px 0px 10px 60px;' %><br>
+        <span class="font-weight-bold">注文履歴</span><%= link_to "一覧を見る", public_orders_path, class: 'btn btn-primary', style: 'margin: 10px 0px 50px 44px;' %>
       </div>
 
     </div>

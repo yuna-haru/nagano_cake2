@@ -51,12 +51,13 @@
       </div>
 
       <div>
-        <p>商品合計<%# @total = 0 %>
-                    <%# @cart_item.each do |cart_item|%></p>
-                      <%#= @total += cart_item.subtotal %>
-                    <%# end %>
+        <p>商品合計<% @total = 0 %>
+                    <% @order.order_details.each do |order_detail|%>
+                      <% @total += order_detail.amount * order_detail.price %>
+                    <% end %>
+                    <%= @total %></p>
         <p>送料<%= @order.payment %></p>
-        <p>請求金額合計</p>
+        <p>請求金額合計<%= @total + @order.payment %></p>
       </div>
 
     </div>
