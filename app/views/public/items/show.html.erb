@@ -2,32 +2,33 @@
   <div class="row">
     <div class="mx-auto col-xl-11">
 
-      <div style="display: flex">
+      <div style="margin-top: 100px;">
+
+        <div style="display: flex">
 
 
-          <div class="col-md-4 py-5">
-            <% if @item.image.attached? %>
-              <%= image_tag @item.image %>
-            <% else %>
-              <%= image_tag 'no_image', size: "200x200" %>
-            <% end %>
-          </div>
-
-          <div class="col-md-7">
-
-            <span class="font-weight-bold"><%= @item.name %></span><br>
-            <span><%= @item.introduction %></span><br>
-            <span class="font-weight-bold"><%= @item.with_tax_price%></span><span class="text-lowercase">(税込)</span><br>
-
-            <div>
-              <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
-                <%= f.hidden_field :item_id, :value => @item.id %>
-                <%= f.select :amount, *[1..10] %>
-                <span class="ml-5"><%= f.submit "カートに入れる", class: 'btn btn-success' %></span>
+            <div class="col-md-4 py-5">
+              <% if @item.image.attached? %>
+                <%= image_tag @item.image %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
               <% end %>
             </div>
-          </div>
 
+            <div class="col-md-7">
+              <span class="font-weight-bold"><%= @item.name %></span><br>
+              <span><%= @item.introduction %></span><br>
+              <span class="font-weight-bold"><%= @item.with_tax_price%></span><span class="text-lowercase">(税込)</span><br>
+              <div>
+                <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+                  <%= f.hidden_field :item_id, :value => @item.id %>
+                  <%= f.select :amount, *[1..10] %>
+                  <span class="ml-5"><%= f.submit "カートに入れる", class: 'btn btn-success' %></span>
+                <% end %>
+              </div>
+            </div>
+
+        </div>
 
       </div>
 

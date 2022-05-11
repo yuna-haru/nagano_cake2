@@ -23,7 +23,7 @@
                       </span></div>
         <div><span class="font-weight-bold">支払方法</span>
                       <span style="margin-left: 87px;">
-                        <%= @order.payment_method %>
+                        <%= @order.payment_method_i18n %>
                       </span></div>
                     <%= form_with model: @order, url: admin_order_path(@order.id), method: :patch, local: true do |f| %>
         <div><span class="font-weight-bold">注文ステータス</span>
