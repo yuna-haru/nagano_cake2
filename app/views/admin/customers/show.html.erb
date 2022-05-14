@@ -31,9 +31,9 @@
 
       <span style="margin-right: 48px;">会員ステータス</span>
       <% if @customer.is_deleted %>
-        <span class="text-success">有効</span>
-      <% else %>
         <span class="text-muted">退会</span>
+      <% else %>
+        <span class="text-success">有効</span>
       <% end %><br>
 
       <%= link_to "編集する", edit_admin_customer_path, class:'btn btn-success', style:'margin-left: 160px;' %>

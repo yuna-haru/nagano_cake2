@@ -15,18 +15,22 @@
               <% end %>
             </div>
 
+
             <div class="col-md-7">
               <span class="font-weight-bold"><%= @item.name %></span><br>
               <span><%= @item.introduction %></span><br>
               <span class="font-weight-bold"><%= @item.with_tax_price%></span><span class="text-lowercase">(税込)</span><br>
-              <div>
-                <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
-                  <%= f.hidden_field :item_id, :value => @item.id %>
-                  <%= f.select :amount, *[1..10] %>
-                  <span class="ml-5"><%= f.submit "カートに入れる", class: 'btn btn-success' %></span>
-                <% end %>
-              </div>
+              <% if customer_signed_in? %>
+                <div>
+                  <%= form_with model: @cart_item, url: public_cart_items_path, method: :post do |f| %>
+                    <%= f.hidden_field :item_id, :value => @item.id %>
+                    <%= f.select :amount, *[1..10] %>
+                    <span class="ml-5"><%= f.submit "カートに入れる", class: 'btn btn-success' %></span>
+                  <% end %>
+                </div>
+              <% end %>
             </div>
+
 
         </div>
 

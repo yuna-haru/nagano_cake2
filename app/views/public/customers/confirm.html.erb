@@ -16,7 +16,7 @@
 
       <div  class="d-flex justify-content-center">
         <span style="margin-right:20px;"><%= link_to "退会しない", public_customers_mypage_path, class: 'btn btn-primary' %></span>
-        <span><%= link_to "退会する", public_customers_withdraw_path, method: :patch, class: 'btn btn-danger' %></span>
+        <span><%= link_to "退会する", public_customers_withdraw_path, method: :patch, data: { confirm: '本当に退会しますか?'}, class: 'btn btn-danger' %></span>
       </div>
 
     </div>

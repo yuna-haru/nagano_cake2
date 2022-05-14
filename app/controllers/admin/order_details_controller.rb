@@ -4,7 +4,7 @@ class Admin::OrderDetailsController < ApplicationController
         order_detail = OrderDetail.find(params[:id])
         order_status = params[:order_detail][:order_detail_status].to_i
         @order = order_detail.order
-        @order_details = @order.order_details　#updateの後に変数を記述するとエラーが出る可能性がある
+        @order_details = @order.order_details #updateの後に変数を記述するとエラーが出る可能性がある
         order_detail.update(order_detail_params)
 
         @order_details.each do |od|
@@ -12,6 +12,23 @@ class Admin::OrderDetailsController < ApplicationController
             @order.update(order_status: 2)
             end
         end
+
+        flag = false
+            @order_details.each do |order_d|
+                if order_d.order_detail_status_i18n == "製作完了"
+                    flag = true
+                else
+                    flag = false
+                    break
+                end
+            end
+            if flag == true
+                @order.update(order_status: 3)
+            end
+            #if@order_details.all?{ |order_d| order_d.order_detail_status_i18n == "製作完了" }
+                #@order.update(order_status: 3)
+            #end
+            
 
         # 1.「 注文詳細の製作ステータスが製作中だったら」というif文
         # 2. 注文詳細に紐づく注文データを取得 ※6行目

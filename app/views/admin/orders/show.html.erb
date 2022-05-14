@@ -9,8 +9,8 @@
       <div style="margin-bottom: 10px;">
         <div><span class="font-weight-bold">購入者</span>
                       <span style="margin-left: 103px;">
-                        <%= link_to admin_customer_path(@customer.id) do %>
-                        <%= @customer.first_name %><%= @customer.last_name %>
+                        <%= link_to admin_customer_path(@order.customer.id) do %>
+                        <%= @order.customer.first_name %><%= @order.customer.last_name %>
                       <% end %>
                       </span></div>
         <div><span class="font-weight-bold">注文日</span>
@@ -19,7 +19,7 @@
                       </span></div>
         <div><span class="font-weight-bold">配送先</span>
                       <span style="margin-left: 103px;">
-                        <%= @customer.address %>
+                        <%= @order.customer.address %>
                       </span></div>
         <div><span class="font-weight-bold">支払方法</span>
                       <span style="margin-left: 87px;">

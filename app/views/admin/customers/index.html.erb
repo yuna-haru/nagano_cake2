@@ -19,12 +19,14 @@
                   <% @customer.each do |customer|%>
                   <tr>
                     <td class="px-3"><p><%= customer.id %></p></td>
-                    <td class="px-3"><p><%= customer.first_name %> <%= customer.last_name %></p></td>
+                    <td class="px-3"><p><%= link_to admin_customer_path(customer.id) do %>
+                                          <%= customer.first_name %> <%= customer.last_name %>
+                                        <% end %></p></td>
                     <td class="px-3"><p><%= customer.email %></p></td>
                     <td class="px-3"><p><% if customer.is_deleted %></p>
-                                        <p class="text-success">有効</p>
-                                        <% else %>
                                         <p class="text-muted">退会</p>
+                                        <% else %>
+                                        <p class="text-success">有効</p>
                                         <% end %></td>
                   </tr>
                   <% end %>
